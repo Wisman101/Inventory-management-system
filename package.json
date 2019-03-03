@@ -1,0 +1,15 @@
+{
+  "name": "inventory-system",
+  "version": "1.0.0",
+  "description": "\"a simple inventory management system\"",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Wisman",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^4.0.5",
+    "mysql": "^2.16.0"
+  }
+}
