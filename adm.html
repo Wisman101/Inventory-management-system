@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>header</title>
+	<link rel="stylesheet" type="text/css" href="./css/adm.css">
+</head>
+<body class="adm">
+<header class="header"><h1><span class="float"><input type="button" name="home" value="HOME" id="home"></span> ADMIN
+	<span ><input class = "float1" type="button" name = 'logOut' value = "logOut" id = 'logOut'></span><hr>
+</h1>
+    </header>
+<div class="sidepanel">
+    		<h1>Dash Board</h1><hr>
+<div class="">
+	<details><summary  style="cursor: pointer">Modify users</summary>
+		<ul>
+			<li class = 'button' id="aUser"> Add user</li>
+			<li class = 'button' id="rUser">Remove user<br>
+				<div id="com"></div>
+			<p id="ru" style="visibility: hidden"><input type="text" placeholder="userId" name="userId" id="ui"><br>
+			<input type="button" name="removeUser" value="Remove" id="rem"></p></li>
+
+
+		</ul></details>
+	<details><summary style="cursor: pointer">Modify stocks</summary>
+		<ul>
+			<li><a href="" id="aStock"> Add stock</a></li>
+			<li><a href="" id="rStock"> Remove stock</a></li>
+		</ul></details>
+	<details><summary style="cursor: pointer">reports</summary>
+		<ul>
+			<li><a href=""> users reports</a></li>
+			<li><a href=""> General report</a></li>
+		</ul></details>
+</div>
+    	</div>
+
+<div class="adm">
+	<h1>ADMIN PANEL</h1>
+<p>Select action from the side bar</p>
+</div>
+<details><summary class="summary">users</summary>
+	<div class ="table"><table border="1"><thead><tr ><th>UserId</th><th rowspan = 2>FirstName</th><th rowspan = 2>Last Name</th>
+		<th rowspan = 2>Id No</th><th rowspan = 2>contact</th><th rowspan = 2>Email</th></tr></thead>
+		<tbody id="all"></tbody></table></div>
+
+
+<!--<div id="all"></div>-->
+</details>
+<details><summary class="summary">stocks</summary>
+	<div class ="table1">
+	<table border="1"><thead ><tr><th>StockId</th><th rowspan = 2>Name/Description</th><th rowspan = 2>Keyword</th><th rowspan = 2>Quantity Available</th>
+		<th rowspan = 2>Unit of measure</th><th rowspan = 2>price</th></tr></thead>
+		<tbody id="alls"></tbody></table></div></details>
+<script>
+	require('./adm.js');
+</script>
+
+</body>
+</html>

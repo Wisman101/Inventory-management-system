@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Stock</title>
+</head>
+<body>
+	<h1>Add Stock</h1>
+<form>
+	<label> Stock Name and description:</label>
+	<p><textarea name="Sname" rows="3" id="Sname" required></textarea></p>
+	<label>Keyword</label>
+	<p><input type="text" name="Kword" id="kw" required></p>
+	<label>Unit of measure:</label>
+	<p><input type="text" name="unit" id="uom" required></p>
+	<label>Quantity</label>
+	<p><input type="number" name="quantity" id="qt" required></p>
+	<label>Price per unit</label>
+	<p><input type="number" name="price" id="ppu" required></p>
+	<input type="submit" name="submit" id="ss">
+	<input type="reset" name="reset">
+</form>
+	<script>
+		const electron = require ('electron');
+		const url = require('url');
+		const path = require ('path');
+		const app = electron.app;
+		const ipc = electron.ipcRenderer;
+		const BrowserWindow = electron.remote.BrowserWindow;
+		function sSubmit(){
+			let stockData = {};
+			stockData.name = document.getElementById('Sname').value;
+			stockData.keyword = document.getElementById('kw').value;
+			stockData.Unit_of_measure = document.getElementById('uom').value;
+			stockData.quantity = document.getElementById('qt').value;
+			stockData.price = document.getElementById('ppu').value;
+			// if (isNaN(stockData.keyword)){
+			// 	window.alert("fill");
+
+
+			//else{
+
+				ipc.send('cAddStock', stockData);
+			}
+
+
+		document.getElementById('ss').addEventListener('click', () => {
+			sSubmit()
+		});
+	</script>
+</body>
+</html>

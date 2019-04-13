@@ -1,0 +1,19 @@
+.login
+{
+    text-align: center;
+    background-color: darkolivegreen;
+    color: white;
+    position: relative;
+    margin-top: 100px;
+}
+img {
+    border-radius: 500px;
+    width: 200px;
+    height: 200px;
+
+}
+.change{
+    border: none;
+    background-color: darkolivegreen;
+    color: ghostwhite;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>inventory</title>
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
+
+</head>
+<body class = "login">
+
+    <span><img src="office-620822__340.jpg"></span>
+    <div id="invalid" style="color: red"></div>
+    <form method = 'post' action = ''>
+    <p>USERNAME<br>
+     <input type = "text" name = "user" placeholder="username" id = uName autofocus></p>
+    <p>PASSWORD<br>
+        <input type="password" name="pass" placeholder="password" id = 'pass' onkeyup="enter(event)"></p>
+    <p><input type="button" name = "login" value="login" id="sb" >
+        <input type = "reset" name = "clear" value = "clear" id = "reset"></p>
+        <p><input class = 'change' type = "button" name="ChangeP" value="Change password" id = "cp"></p>
+</form>
+
+<script>
+    const electron = require ('electron');
+    const ipc = electron.ipcRenderer;
+
+    function enter(e){
+        if(e.keyCode === 13){
+            login();
+            document.getElementById("uName").value = "";
+            document.getElementById("pass").value = "";
+        }
+    }
+
+    //getting the username and password input by the user
+    //sending the data to the main process for validation
+    function login() {
+        let loginData = {};
+        loginData.userName = document.getElementById("uName").value;
+        loginData.pass = document.getElementById("pass").value;
+
+        ipc.send('login', loginData);
+
+        ipc.on('invalid', function (event, arg) {
+            document.getElementById('invalid').innerHTML= arg;
+        })
+    }
+
+    require('./login.js');
+</script>
+</body>
+</html>

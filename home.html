@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+
+</head>
+
+<header class="header">
+    <h1><div class="f"><p id = 'username'></p><br><p id="font"></p></div>
+       <input class="float" type="button" id="admin" value="ADMIN"   style = "visibility: hidden"><br>
+        <details class = "float1"><summary>Account</summary>
+            <ul>
+                <li><a href="#" id = "logOut">logOut</a></li>
+            </ul>
+            <!--<input class = "float1" type="button" id="logOut" value = "LogOut">-->
+        </details>
+         </h1>
+    <hr>
+</header>
+
+<body>
+<div id = 'comment' style = 'color: red; text-align: center'></div>
+<div class="align">
+    <table border="1" id="myTable">
+        <thead>
+        <tr>
+            <th>Product_keyword</th>
+            <th>Name_description</th>
+            <th>quantity</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div id="input">
+            <tr>
+                <td><input type="text" name="keyword" id="kw1"
+                    onkeyup="keyword(event)">
+                </td>
+                <td><input type="text" name="stock_name" id="sn1"></td>
+                <td><input type="number" name="1" value="1" id="q1" onkeyup="price(event, id, name)"></td>
+                <td><input type="number" name="price" id="pr1"></td>
+            </tr>
+            <tr id = 'dynamic'>
+            <tr>
+                <td colspan="3">TOTAL PRICE</td>
+                <td><input type="number" name="totalPrice" id="tp"> </td>
+            </tr>
+
+        </div>
+        </tbody>
+    </table>
+    <div>
+       <input  type="button" name="sell" value="sell" id="sell"><br>
+        <input type="button" name="report" value="Generate_report" id="report">
+
+    </div>
+</div>
+<details><summary class="summary" id="sum">stocks</summary>
+    <div class ="table1">
+        <table border="1"><thead ><tr><th>StockId</th><th rowspan = 2>Name/Description</th><th rowspan = 2>Keyword</th><th rowspan = 2>Quantity Available</th>
+            <th rowspan = 2>Unit of measure</th><th rowspan = 2>price</th></tr></thead>
+            <tbody id="alls"></tbody></table></div></details>
+<script>
+    const mysql = require('mysql');
+    let c = 0;
+    let q;                  //quantity available
+    let ttl = 0;            //price per unit
+    let key;                //keyword
+    let pric ;              //price for the input
+    let sum = 0;            //total price of all input
+    let k = 1;              //setting ids
+    let i = 2;              //setting row index
+    let tprice = 0;         //price
+    let div;                //price per unit
+    let amt = 0;
+    let set = true;
+
+    //connecting to the db
+    let con = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'Somenigga101',
+        database: 'inventory_db',
+
+    });
+    con.connect();
+
+    //checking the keyword, fetching stock detail from dp
+    //generating a dynamic column for next input
+    function keyword(e) {
+        key = document.getElementById('kw'+k).value;
+
+
+        if (e.keyCode === 13) {
+            let sql = 'SELECT `name_description`, `price_per_unit`,`quantity_available` FROM `stock` where keyword = ' + mysql.escape(key);
+
+            con.query(sql, function (err, result) {
+                if(result[0] == null){
+                    document.getElementById('comment').innerHTML = 'Keyword not found';
+                }else{
+                    document.getElementById('comment').innerHTML = '';
+
+                    ttl = result[0].price_per_unit;
+
+                    document.getElementById('sn' + k).value = result[0].name_description;
+                    document.getElementById('pr' + k).value = result[0].price_per_unit;
+                    sum += ttl;
+                    document.getElementById('tp').value = sum;
+
+                    let table = document.getElementById('myTable');
+                    let row = table.insertRow(i);
+                    let cell = row.insertCell(0);
+                    let cell1 = row.insertCell(1);
+                    let cell2 = row.insertCell(2);
+                    let cell3 = row.insertCell(3);
+
+
+                    cell.innerHTML = ` <input type="text" name="keyword" id="kw${i}"` +
+                        '                 onkeyup="keyword(event)" >\n' +
+                        '                ';
+                    cell1.innerHTML = `<input type="text" name="stock_name" id="sn${i}" >`;
+                    cell2.innerHTML = ` <input type="number" name= ${i} value="1" id="q${i}" onkeyup="price(event, id, name)">`;
+                    cell2.id = k;
+                    cell3.innerHTML = `<input type="number" name="price" id="pr${i}">`;
+                    k++;
+                    i++;
+
+                }
+
+            });
+
+        }
+
+    }
+
+            //calculating the total price for each input
+            function price(e, v, x) {
+                let word = document.getElementById('kw'+x).value;
+                let sqli = 'SELECT `quantity_available`, `price_per_unit` FROM `stock` where keyword = ' + mysql.escape(word);
+                con.query(sqli, function (error, results) {
+                    div = results[0].price_per_unit;
+                    q = results[0].quantity_available;
+                   let qt = document.getElementById(v).value;
+                   if(qt>q){
+                       document.getElementById('comment').innerHTML = "quantity not available in stock";
+                       set = false;
+                   }else{
+                       document.getElementById('comment').innerHTML = "";
+                       tprice = parseInt(document.getElementById('pr'+x).value);
+                       pric = (document.getElementById(v).value)*div;
+                       document.getElementById('pr'+x).value = pric;
+                       set = true;
+                       total()
+                   }
+
+                });
+            }
+
+            //getting the total price for all the input
+            function total() {
+                amt = (sum-tprice)+pric;
+                document.getElementById('tp').value = amt;
+                sum = amt;
+            }
+
+           require('./home.js');
+</script>
+
+</body>
+</html>

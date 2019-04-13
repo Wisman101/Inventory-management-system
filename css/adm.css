@@ -1,0 +1,128 @@
+.username_icon { border: 2px solid black;
+		border-radius: 30%; }
+
+.header{
+	background-color: #556B2F;
+	color: white;
+	margin-left: -8px;
+	margin-right: -8px;
+	margin-top: -21px;
+}
+.adm {
+	text-align: center;
+	background-color: #7ba57d;
+}
+.hover
+{
+	color: white;
+
+}
+details{
+	font-size: 1.5em;
+}
+nav:hover
+{
+	color: black;
+}
+.side{
+	background-color: darkgreen;
+}
+nav ul{
+	display: none;
+	list-style: none;
+}
+a{
+	color: deepskyblue;
+}
+nav:hover ul{
+	display: block;
+}
+.float{
+	float: left;
+	position: relative;
+	width: 5%;
+	height: 30px;
+}
+.table{
+    margin-left: 380px;
+    margin-right: 50px;
+}
+.table1{
+    margin-left: 380px;
+    margin-right: 50px;
+}
+.button{
+    color: deepskyblue;
+    cursor: pointer;
+}
+.float1 {
+	float: right;
+	position: relative;
+	bottom: 0px;
+	margin-top: 23px;
+	padding: 5px;
+	border:none;
+	height: 30px;
+	background-color: #556b2f;
+	color: white;
+}
+.center{
+	text-align: center;
+}
+
+.add-user-form{
+ text-align: center;
+ font-family: sans-serif;
+
+}
+.input{
+	border-width: 0em;
+	border: 2px solid black;
+}
+.sidepanel{
+	float: left;
+	width: 20%;
+	height: -webkit-fill-available;
+	text-align: left;
+	background-color: darkgreen;
+	margin-top: -21px;
+	margin-left: -8px;
+}
+.adm{	
+	text-align: center;
+
+}
+.summary {
+	width: 80%;
+	float: right;
+	cursor: pointer;
+}
+
+#newuser > td{		
+	padding: 3%;
+	height: 50px;
+	width: 100%;
+}
+.new_user{
+	margin-right: auto;
+	margin-left: auto;
+}
+.new_user label{
+
+	text-align: right;
+	display: inline-block;
+  	width: 140px;
+  }
+
+  .new_user  td{
+  	padding: 3%;
+  }
+  .new_user input{
+  	  background-color : #d1d1d1; 
+  	  border: 1px solid;
+  	  border-radius: 5px;
+  	  height:30px; 
+  	}
+  .error_message{
+  	color: red;
+  }

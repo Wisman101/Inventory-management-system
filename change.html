@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change password</title>
+</head>
+<body style="text-align: center">
+<div id="error"></div>
+    <form>
+        <label>Username</label>
+        <p><input type="text" name="username" placeholder="username" id="un" autofocus></p>
+        <label>Old password</label><br>
+        <p><input type="password" name="oldpass" placeholder="old password" id="op" ></p>
+       <label>New password</label><br>
+        <p> <input type="password" name="newpass" placeholder="new password" id="np"></p>
+       <label>Confirm password</label><br>
+        <p> <input type="password" name="Cnewpass" placeholder="confirm password" id="cnp" onkeyup="passcheck(event)"></p>
+        <div id = 'err'></div>
+        <p><input type="button" name="submit" value="submit" id="sub"></p>
+    </form>
+<script>
+    function passcheck(e){
+        let cpass = document.getElementById('cnp').value;
+        let npass = document.getElementById('np').value;
+        if(cpass !== npass){
+            document.getElementById('err').style.color = 'red';
+            document.getElementById('err').innerHTML ="password should match";
+        }else
+        {
+            document.getElementById('err').style.color = 'green'
+        }
+    }
+    require('./change.js');
+</script>
+</body>
+</html>

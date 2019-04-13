@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add user</title>
+	<link rel="stylesheet" type="text/css" href="css/adm.css">
+</head>
+<body>
+<div>
+	 <div class="add-user-form">
+		<form >
+			<h1 class="center">Add User</h1>
+
+			<p  id="common_error" class="error_message"></p>
+			<table class="new_user">
+				<tr>
+					<td>
+						<label>First name:</label>
+					</td>
+					<td>
+						<input type="text" name="fname" id="fname" autofocus onkeyup="isFNameCharacter()">
+						<p id="fError" class="error_message" ></p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+				<label>Last name:</label>
+						
+					</td>
+					<td>
+					<input type="text" name="lname" id="lname" onkeyup="isLNameCharacter()">
+						<p id="lError" class="error_message"></p>
+						
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
+					<label>Id/passport number:</label>
+					</td>
+					<td>
+						<input type="text" name="idNo" id="idNo">
+						
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
+			<label>Tel No:</label>
+					</td>
+					<td>
+					<input type="text" name="telNo" value="+254" id="tel" onkeyup="isNumber(event)">
+						<p id="telError" class="error_message"></p>
+						
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
+				<label>Email address:</label>
+					</td>
+					<td>
+						
+						<input type="Email" name="email" id="email">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
+			<label>UserName:</label>
+					</td>
+					<td>
+					<input type="text" name="UserName" id="Uname">
+						
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
+				<label>Temporary Password:</label>
+					</td>
+					<td>
+					<input type="text" name="Password" id="pass">
+						
+					</td>
+				</tr>
+				<tr>	<td>
+
+					</td>
+					<td>	
+						<button  name="submit" id="sbt"> Submit</button>
+				<input type="reset" name="reset">
+					</td>
+				</tr>
+			</table>
+				
+		</form>
+	</div>
+</div>
+<script>
+    require('./addUser.js')
+</script>
+</body>
+</html>

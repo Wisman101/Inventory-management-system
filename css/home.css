@@ -1,0 +1,93 @@
+.username_icon { border: 2px solid black;
+    border-radius: 35%; }
+.float {
+    float: right;
+    position: relative;
+    bottom: 0px;
+    margin: 0px;
+    padding: 5px;
+    border:none;
+    height: 30px;
+    background-color: #556b2f;
+    color: white;
+    cursor: pointer;
+}
+.float:hover{
+    color: deepskyblue;
+}
+.float1 {
+    cursor: pointer;
+    float: right;
+    position: relative;
+    bottom: 0px;
+    margin-top: -10px;
+    padding: 5px;
+    border:none;
+    height: 30px;
+    background-color: #556b2f;
+    color: white;
+}
+.float1:hover{
+    color: deepskyblue;
+}
+.align{
+    margin-left: 5%;
+    margin-right: 5%;
+    overflow-x: auto;
+}
+
+#sell{
+    margin-left: 94%;
+    height: 2em;
+    width: 3em;
+}
+
+.header{
+    background-color: #556B2F;
+    color: white;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-top: -21px;
+}
+body {
+    background-color: #7ba57d;
+}
+
+table{
+    background-color: #7ba57d;
+    width: 100%;
+}
+
+td input{
+    width: 100%;
+}
+#report{
+    position: relative;
+
+
+}
+
+.f{
+    float: left;
+    position: relative;
+    line-height: 25px;
+}
+#username{
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+}
+.summary {
+   text-align: center;
+}
+.table1{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+#font{
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+}
